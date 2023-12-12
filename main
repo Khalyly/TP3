@@ -15,19 +15,19 @@ nombre_victoires_consecutives = 0
 users_choix = 1
 combat_statut = 0
 
-#loop (intro du jeu)
-while users_choix != 4 and niveau_vie > 0:
+#boucle confrontation avec adversaire
+while users_choix != 4 and vies > 0:
     puissance_adversaire = random.randrange(2, 12)
     puissance_boss_final = random.randrange(6, 16)
 
     if nombre_victoires_consecutives == 3:
         puissance_adversaire = puissance_boss_final
     print("\n________________________________________________________________________________________________________________________________________________________________________________________________")
-    print("Vous tombez face à face avec un adversaires de difficulté :",force_adversaire)
+    print("Vous tombez face à face avec un adversaires de difficulté :",puissance_adversaire)
     print("\nQue voulez-vous faire ? \n1- Combattre cet adversaire\n2- Aller ouvrir une autre porte\n3- Afficher les règles du jeu\n4- Quitter la partie")
     users_choix = int(input("1, 2, 3 ou 4: "))
 
-#1 - Combattre cet adversaire
+#Choix 1 - Combattre cet adversaire
     if users_choix == 1:
         score_dé1 = random.randrange (1,6)
         score_dé2 = random.randrange (1,6)
@@ -37,9 +37,10 @@ while users_choix != 4 and niveau_vie > 0:
         print("\nTa puissance pour le combat:", score_dé1,"et", score_dé2)
         print("\nLe combat commence...")
 
-        if score_dé_final <= force_adversaire:
+    #Lorsque tu perds un combat ou tu perd toutes tes vies
+        if score_dé_final <= puissance_adversaire:
                 print("Tu as été vaincu,une mauvaise défaite")
-                vies = vies - force_adversaire
+                vies = vies - puissance_adversaire
                 print("\nnombre de vies restantes: ",vies)
                 nombre_victoires_consecutives = 0
                 numero_combat = numero_combat + 1
@@ -47,29 +48,29 @@ while users_choix != 4 and niveau_vie > 0:
                 if vies <= 0:
                     print("La partie est terminée et tu as battu",nombre_victoires," adversaire(s)")
 
-
-        elif score_dé_finale > force_adversaire:
+    #Lorsque tu gagnes un combat
+        elif score_dé_final > puissance_adversaire:
                 print("Tu as gagné le combat, une belle victoire")
-                vies = vies + force_adversaire
+                vies = vies + puissance_adversaire
                 nombre_victoires_consecutives = nombre_victoires_consecutives + 1
                 numero_combat = numero_combat + 1
                 nombre_victoires = nombre_victoires + 1
                 print("\nNombres de vies restantes: ", vies, "\nNombre de victoires consécutives: ",nombre_victoires_consecutives)
 
 
-#2- Aller ouvrir une autre porte
+#Choix 2- Aller ouvrir une autre porte
     elif users_choix == 2:
         vies -= 1
         print("\nIl y a un nouvel adversaire prêt a te combattre, mais il y a une pénalité de 1 point de vie ")
 
-#3- Afficher les règles du jeu
+#Choix 3- Afficher les règles du jeu
     elif users_choix == 3:
         print("\nPour réussir un combat, il faudrait que la somme des deux dés lancé soit supérieure à la puissance de l'adversaire. Si c,est le cas, ton nombre de vies est augmenté par la puissance de l'adversaire.")
         print("Pour perdre un combat, il faudrait que la somme des deux dés lancé soit inférieure à la puissance de l'adversaire. Si c,est le cas, ton nombre de vies est diminué par la puissance de l'adversaire.")
         print("La partie se termine lorsque les vies de l’usager sont égales ou plus basses que 0.")
         print("L’usager peut combattre ou éviter chaque adversaire, si l'usager veut ouvrir une autre porte, il y a une pénalité de 1 point de vie.")
 
-#4- Quitter la partie
+#Choix 4- Quitter la partie
     elif users_choix == 4:
         print("\nMerci et au revoir...")
 
