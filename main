@@ -15,7 +15,7 @@ nombre_victoires_consecutives = 0
 users_choix = 1
 combat_statut = 0
 
-#boucle confrontation avec adversaire
+#boucle tant que l'utilisateur est vivant et ne quitte pas
 while users_choix != 4 and vies > 0:
     puissance_adversaire = random.randrange(2, 12)
     puissance_boss_final = random.randrange(6, 16)
