@@ -1,3 +1,6 @@
+#Par Khalil Bendjennet et Siena Farruggia
+#2023
+#TP3
 import random
 
 #QUESTION THÉORIQUE: Il faudrait diminuer la fourchette de chiffre dans la fonction aléatoire (random.randrange) qui détermine la puissance de l'adversaire et comme ça c'est plus facile à battre des adversaires.
